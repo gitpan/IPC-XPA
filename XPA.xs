@@ -1,9 +1,23 @@
-/*
-  (C) 2000 Smithsonian Astrophysical Observatory.  All rights reserved.
-
-  This program is free software; you can redistribute it and/or modify
-  it under the same terms as Perl itself.
-*/
+/* --8<--8<--8<--8<--
+ *
+ * Copyright (C) 2000-2009 Smithsonian Astrophysical Observatory
+ *
+ * This file is part of IPC-XPA
+ *
+ * IPC-XPA is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at
+ * your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * -->8-->8-->8-->8-- */
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,7 +44,7 @@ extern "C" {
 
 typedef XPA IPC_XPA_RAW;
 
-MODULE = IPC::XPA		PACKAGE = IPC::XPA		
+MODULE = IPC::XPA		PACKAGE = IPC::XPA
 
 IPC_XPA_RAW
 _Open(mode)
@@ -48,7 +62,7 @@ nullXPA()
 	RETVAL
 
 
-void 
+void
 _Close(xpa)
 	IPC_XPA_RAW	xpa
 	CODE:
@@ -138,7 +152,7 @@ _Set(xpa, xtemplate, paramlist, mode, buf, len, max_servers )
 		/* free up memory that's no longer needed */
 		Safefree( names );
 		Safefree( messages );
-	
+
 
 void
 _Info(xpa, xtemplate, paramlist, mode, max_servers )
@@ -188,7 +202,7 @@ _NSLookup(xpa, tname, ttype)
 		int i;
 		int ns;
 	PPCODE:
-		ns = XPANSLookup( xpa, tname, ttype, &xclasses, &names, 
+		ns = XPANSLookup( xpa, tname, ttype, &xclasses, &names,
                                  &methods, &infos );
 		/* convert result into something Perlish */
 		EXTEND(SP, ns);
